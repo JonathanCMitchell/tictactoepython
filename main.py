@@ -2,6 +2,7 @@
 from helper import createBoard
 from helper import displayMovesAndSaveInput
 from helper import acceptMoveAndToggle
+# from helper import checkRowWinner
 
 def initializePlayers(players):
   players = {}
@@ -20,16 +21,13 @@ def initializePlayers(players):
     players['playerTwoName'] = playerTwoName
   return players
 
-
 players = {}
 players = initializePlayers(players)
-
 # create a while loop to show that nobody has won yet
 board = createBoard()
 currentMove = displayMovesAndSaveInput(board)
 acceptMoveAndToggle(currentMove, board, players)
+# checkRowWinner(board)
 
-currentMove = displayMovesAndSaveInput(board)
-acceptMoveAndToggle(currentMove, board, players)
-
-
+print('Board after first input save: ', board)
+# checkRowWinner(board)
