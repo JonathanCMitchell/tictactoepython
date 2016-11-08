@@ -1,5 +1,8 @@
 # create player startup prompt, accept input s
-# from helper import createBoard
+from helper import createBoard
+from helper import displayMovesAndSaveInput
+from helper import acceptMoveAndToggle
+
 def initializePlayers(players):
   players = {}
   playerOneName = input('Enter your name player one')
@@ -21,10 +24,12 @@ def initializePlayers(players):
 players = {}
 players = initializePlayers(players)
 
+# create a while loop to show that nobody has won yet
+board = createBoard()
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players)
 
-print (players)
-# board = createBoard()
-# print ('board in mainpy is: ', board)
-
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players)
 
 

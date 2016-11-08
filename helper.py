@@ -11,7 +11,7 @@ def displayMovesAndSaveInput(matrix):
   print(repr(matrix[0]).rjust(2) + '\n', repr(matrix[1]).rjust(3) + '\n', repr(matrix[2]).rjust(4) + '\n')
   selected = input('Your move: ')
   if 1 <= int(selected) <= 9:
-    return selected
+    return int(selected)
   else: 
     print('You have selected something not in range please try again')
     displayMovesAndSaveInput(matrix)
@@ -49,11 +49,11 @@ def acceptMoveAndToggle(num, matrix, players):
     print('not an acceptable move')
     pass
 
-yourMoveNumber = int(displayMovesAndSaveInput(board))
-print('your move number yype', type(yourMoveNumber))
+# yourMoveNumber = int(displayMovesAndSaveInput(board))
+# print('your move number yype', type(yourMoveNumber))
 # acceptMoveAndToggle(1, board, {'playerOneSymbol': 'X', 'playerOneName': 'jj', 'playerTwoName': 'kk', 'playerTwoScore': 0, 'playerTwoTurn': False, 'playerOneTurn': True, 'playerOneScore': 0, 'playerTwoSymbol': 'O'})
 
-
+# acceptMoveAndToggle(yourMoveNumber, board, players
 
 #while (there is no winner):
 # play()
