@@ -1,8 +1,26 @@
+def initializePlayers(players):
+  players = {}
+  playerOneName = input('Enter your name player one')
+  if not playerOneName in players:
+    players['playerOneScore'] = 0
+    players['playerOneTurn'] = True
+    players['playerOneSymbol'] = 'X'
+    players['playerOneName'] = playerOneName
+
+  playerTwoName = input('Enter your name player Two')
+  if not playerTwoName in players:
+    players['playerTwoScore'] = 0
+    players['playerTwoTurn'] = False
+    players['playerTwoSymbol'] = 'O'
+    players['playerTwoName'] = playerTwoName
+  return players
+
+
 def createBoard():
   matrix = [None, None, None]
-  matrix[0] = [1, 2, 3]
-  matrix[1] = [4, 5, 6]
-  matrix[2] = [7, 8 ,9]
+  matrix[0] = [0, 1, 2]
+  matrix[1] = [3, 4, 5]
+  matrix[2] = [6, 7 ,8]
   return matrix
 
 board = createBoard()
@@ -18,78 +36,58 @@ def displayMovesAndSaveInput(matrix):
 
 
 
-def acceptMoveAndToggle(num, matrix, players, attempts):
+def acceptMoveAndToggle(num, matrix, players):
   if players['playerOneTurn']:
-    if 1<= num <= 3:
+    if 0<= num <= 2:
       if not matrix[1][num] == players['playerOneSymbol']:
         matrix[0][num] = players['playerOneSymbol']
-        players['playerOneTurn'] = False
+        togglePlayers(players)
         return matrix
-      else:
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1)
-        else:
-          pass
-    if 4 <= num <= 6:
+    elif 3 <= num <= 5:
       if not matrix[1][num] == players['playerOneSymbol']:
         matrix[1][num] = players['playerOneSymbol']
-        players['playerOneTurn'] = False
+        togglePlayers(players)
         return matrix
-      else:
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1)
-        else:
-          pass
-    if 7 <= 8 <= 9:
+    elif 6 <= 7 <= 8:
       if not matrix[2][num] == players['playerOneSymbol']:
         matrix[2][num] = players['playerOneSymbol']
-        players['playerOneTurn'] = False
+        togglePlayers(players)
         return matrix
-      else:
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1) 
-        else:
-          pass  
   elif players['playerTwoTurn'] and players['playerOneTurn'] == False:
-    if 1<= num <= 3:
+    if 0<= num <= 2:
       if not matrix[0][num] == players['playerTwoSymbol']:
         matrix[0][num] = players['playerTwoSymbol']
-        players['playerTwoTurn'] = False
+        togglePlayers(players)
         return matrix
-      else: 
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1)
-        else:
-          pass
-    if 4 <= num <= 6:
+    elif 3 <= num <= 5:
       if not matrix[1][num] == players['playerTwoSymbol']:
         matrix[1][num] = players['playerTwoSymbol']
-        players['playerTwoTurn'] = False
+        togglePlayers(players)
         return matrix
-      else: 
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1)
-        else:
-          pass
-    if 7 <= 8 <= 9:
+    elif 6 <= num <= 8:
       if not matrix[2][num] == players['playerTwoSymbol']:
         matrix[2][num] = players['playerTwoSymbol']
-        players['playerTwoTurn'] = False
+        togglePlayers(players)
         return matrix
-      else:
-        if attempts < 10:
-          tryAgain(num, matrix, players, attempts + 1)
-        else:
-          pass
   else:
     print('not an acceptable move')
     acceptMoveAndToggle(num, matrix, players)
     pass
 
-  def tryAgain(num, matrix, players, count):
-    print('That spot has already been taken, Please try again')
-    return acceptMoveAndToggle(num, matrix, players, count)
+def togglePlayers(players):
+  if players['playerTwoTurn'] == True:
+    players['playerTwoTurn'] = False
+  elif players['playerTwoTurn'] == False:
+    players['playerTwoTurn'] = True
+  if players['playerOneTurn'] == True:
+    players['playerOneTurn'] = False
+  elif players['playerOneTurn'] == False:
+    players['playerOneTurn'] = True
+  return players
 
+def rowWinner(matrix):
+  for i in matrix:
+    print('i in matrix is: ', i)
 # yourMoveNumber = int(displayMovesAndSaveInput(board))
 # print('your move number yype', type(yourMoveNumber))
 # acceptMoveAndToggle(1, board, {'playerOneSymbol': 'X', 'playerOneName': 'jj', 'playerTwoName': 'kk', 'playerTwoScore': 0, 'playerTwoTurn': False, 'playerOneTurn': True, 'playerOneScore': 0, 'playerTwoSymbol': 'O'})
