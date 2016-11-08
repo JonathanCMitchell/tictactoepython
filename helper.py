@@ -18,7 +18,7 @@ def displayMovesAndSaveInput(matrix):
 
 
 
-def acceptMoveAndToggle(num, matrix, players):
+def acceptMoveAndToggle(num, matrix, players, attempts):
   if players['playerOneTurn']:
     if 1<= num <= 3:
       if not matrix[1][num] == players['playerOneSymbol']:
@@ -26,24 +26,30 @@ def acceptMoveAndToggle(num, matrix, players):
         players['playerOneTurn'] = False
         return matrix
       else:
-        print('Spot taken please try again')
-        acceptMoveAndToggle(num, matrix, players)
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1)
+        else:
+          pass
     if 4 <= num <= 6:
       if not matrix[1][num] == players['playerOneSymbol']:
         matrix[1][num] = players['playerOneSymbol']
         players['playerOneTurn'] = False
         return matrix
       else:
-        print('Spot taken please try again')
-        acceptMoveAndToggle(num, matrix, players)
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1)
+        else:
+          pass
     if 7 <= 8 <= 9:
       if not matrix[2][num] == players['playerOneSymbol']:
         matrix[2][num] = players['playerOneSymbol']
         players['playerOneTurn'] = False
         return matrix
-      else: 
-        print('Spot taken please try again')
-        acceptMoveAndToggle(num, matrix, players)
+      else:
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1) 
+        else:
+          pass  
   elif players['playerTwoTurn'] and players['playerOneTurn'] == False:
     if 1<= num <= 3:
       if not matrix[0][num] == players['playerTwoSymbol']:
@@ -51,30 +57,38 @@ def acceptMoveAndToggle(num, matrix, players):
         players['playerTwoTurn'] = False
         return matrix
       else: 
-        print('That spot has already been taken. Please try again')
-        acceptMoveAndToggle(num, matrix, players)
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1)
+        else:
+          pass
     if 4 <= num <= 6:
       if not matrix[1][num] == players['playerTwoSymbol']:
         matrix[1][num] = players['playerTwoSymbol']
         players['playerTwoTurn'] = False
         return matrix
       else: 
-        print('That spot has already been taken. Please try again')
-        acceptMoveAndToggle(num, matrix, players)
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1)
+        else:
+          pass
     if 7 <= 8 <= 9:
       if not matrix[2][num] == players['playerTwoSymbol']:
         matrix[2][num] = players['playerTwoSymbol']
         players['playerTwoTurn'] = False
         return matrix
-      else: 
-        print('That spot has already been taken. Please try again')
-        acceptMoveAndToggle(num, matrix, players)
+      else:
+        if attempts < 10:
+          tryAgain(num, matrix, players, attempts + 1)
+        else:
+          pass
   else:
     print('not an acceptable move')
     acceptMoveAndToggle(num, matrix, players)
     pass
 
-
+  def tryAgain(num, matrix, players, count):
+    print('That spot has already been taken, Please try again')
+    return acceptMoveAndToggle(num, matrix, players, count)
 
 # yourMoveNumber = int(displayMovesAndSaveInput(board))
 # print('your move number yype', type(yourMoveNumber))

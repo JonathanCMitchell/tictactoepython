@@ -26,7 +26,19 @@ players = initializePlayers(players)
 # create a while loop to show that nobody has won yet
 board = createBoard()
 currentMove = displayMovesAndSaveInput(board)
-acceptMoveAndToggle(currentMove, board, players)
+acceptMoveAndToggle(currentMove, board, players, 0)
+
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players, 0)
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players, 0)
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players, 0)
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players, 0)
+currentMove = displayMovesAndSaveInput(board)
+acceptMoveAndToggle(currentMove, board, players, 0)
+
 # checkRowWinner(board)
 
 print('Board after first input save: ', board)
