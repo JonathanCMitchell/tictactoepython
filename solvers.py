@@ -33,9 +33,43 @@ def colWinner(matrix):
     else:
         return False
 
-board[0] = ['O',1,'X']
-board[1] = ['X', 'X', 'O']
-board[2] = ['X', 'X', 'X']
+def majorDiagWinner(matrix):
+    count_diagX = 0
+    count_diagO = 0
+    for i in range(len(matrix)):
+       if matrix[i][i] == 'X':
+           count_diagX += 1
+       if count_diagX >= 3:
+            return True
+       elif matrix[i][i] == 'O':
+           count_diagO += 1
+       if count_diagO >= 3:
+            return True
+    else:
+        return False
+
+def minorDiagWinner(matrix):
+    count_diagX = 0
+    count_diagO = 0
+    length = len(matrix)
+    for i in range(0, length):
+        print('i is : ', i)
+        if matrix[length-1 - i][i] == 'X':
+            count_diagX += 1
+        if count_diagX >= 3:
+            return True
+        elif matrix[length-1 - i][i] == 'O':
+            count_diagO += 1
+        if count_diagO >= 3:
+            return True
+    else:
+        return False
+
+
+
+board[0] = ['X',2,'O']
+board[1] = ['X', 'O', '2']
+board[2] = ['1', 'X', 'X']
 print(board)
 
-print(colWinner(board))
+print(minorDiagWinner(board))

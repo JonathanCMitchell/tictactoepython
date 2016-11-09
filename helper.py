@@ -35,7 +35,6 @@ def displayMovesAndSaveInput(matrix):
     return displayMovesAndSaveInput(matrix)
 
 
-
 def acceptMoveAndToggle(num, matrix, players):
   if players['playerOneTurn']:
     if 0<= num <= 2:
