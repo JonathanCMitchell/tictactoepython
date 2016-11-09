@@ -18,8 +18,12 @@ def game():
         currentMove = displayMovesAndSaveInput(board, players)
         acceptMoveAndToggle(currentMove, board, players)
     if players['playerOneTurn'] == False:
+        players['playerOneScore'] += 1
+        print('Player one wins')
         return 'Player One Wins'
     elif players['playerTwoTurn'] == False:
+        players['playerTwoScore'] += 1
+        print('player two wins')
         return 'Player Two Wins'
     else:
         pass

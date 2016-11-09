@@ -91,17 +91,7 @@ def togglePlayers(players):
 def rowWinner(matrix):
   for i in matrix:
     print('i in matrix is: ', i)
-# yourMoveNumber = int(displayMovesAndSaveInput(board))
-# print('your move number yype', type(yourMoveNumber))
-# acceptMoveAndToggle(1, board, {'playerOneSymbol': 'X', 'playerOneName': 'jj', 'playerTwoName': 'kk', 'playerTwoScore': 0, 'playerTwoTurn': False, 'playerOneTurn': True, 'playerOneScore': 0, 'playerTwoSymbol': 'O'})
 
-# acceptMoveAndToggle(yourMoveNumber, board, players
-
-#while (there is no winner):
-# play()
-# inside play function do the checks and the prompts and everything
-
-# def checkRowWinner()
-# def checkColWinner()
-# def checkDiagWinner()
-
+def reset_board():
+  global board, game_state
+  board = createBoard()

@@ -21,7 +21,6 @@ def colWinner(matrix):
         row_countX = 0
         row_countO = 0
         for j in range(0, len(matrix)):
-            print('rowi is ', matrix[j][i])
             if matrix[j][i] == 'X':
                 row_countX += 1
             if row_countX >= 3:
@@ -53,7 +52,6 @@ def minorDiagWinner(matrix):
     count_diagO = 0
     length = len(matrix)
     for i in range(0, length):
-        print('i is : ', i)
         if matrix[length-1 - i][i] == 'X':
             count_diagX += 1
         if count_diagX >= 3:
