@@ -25,31 +25,35 @@ def createBoard():
 
 board = createBoard()
 
-def displayMovesAndSaveInput(matrix):
+def displayMovesAndSaveInput(matrix, players):
   print(repr(matrix[0]).rjust(2) + '\n', repr(matrix[1]).rjust(3) + '\n', repr(matrix[2]).rjust(4) + '\n')
-  selected = input('Your move: ')
-  if 1 <= int(selected) <= 9:
+  selected = ''
+  if players['playerOneTurn']:
+    selected = input('Your move player one: ')
+  elif players['playerTwoTurn']:
+    selected = input('Your move player two: ')
+  if 0 <= int(selected) <= 8:
     return int(selected)
   else: 
     print('spot taken')
-    return displayMovesAndSaveInput(matrix)
+    return displayMovesAndSaveInput(matrix, players)
 
 
 def acceptMoveAndToggle(num, matrix, players):
   if players['playerOneTurn']:
     if 0<= num <= 2:
-      if not matrix[1][num] == players['playerOneSymbol']:
+      if not matrix[1][num] == 'X':
         matrix[0][num] = players['playerOneSymbol']
         togglePlayers(players)
         return matrix
     elif 3 <= num <= 5:
-      if not matrix[1][num] == players['playerOneSymbol']:
-        matrix[1][num] = players['playerOneSymbol']
+      if not matrix[1][num - 3] == players['playerOneSymbol']:
+        matrix[1][num - 3] = players['playerOneSymbol']
         togglePlayers(players)
         return matrix
     elif 6 <= 7 <= 8:
-      if not matrix[2][num] == players['playerOneSymbol']:
-        matrix[2][num] = players['playerOneSymbol']
+      if not matrix[2][num - 6] == players['playerOneSymbol']:
+        matrix[2][num - 6] = players['playerOneSymbol']
         togglePlayers(players)
         return matrix
   elif players['playerTwoTurn'] and players['playerOneTurn'] == False:
@@ -59,13 +63,13 @@ def acceptMoveAndToggle(num, matrix, players):
         togglePlayers(players)
         return matrix
     elif 3 <= num <= 5:
-      if not matrix[1][num] == players['playerTwoSymbol']:
-        matrix[1][num] = players['playerTwoSymbol']
+      if not matrix[1][num - 3] == players['playerTwoSymbol']:
+        matrix[1][num - 3] = players['playerTwoSymbol']
         togglePlayers(players)
         return matrix
     elif 6 <= num <= 8:
-      if not matrix[2][num] == players['playerTwoSymbol']:
-        matrix[2][num] = players['playerTwoSymbol']
+      if not matrix[2][num - 6] == players['playerTwoSymbol']:
+        matrix[2][num - 6] = players['playerTwoSymbol']
         togglePlayers(players)
         return matrix
   else:

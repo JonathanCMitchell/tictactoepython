@@ -65,11 +65,8 @@ def minorDiagWinner(matrix):
     else:
         return False
 
-
-
-board[0] = ['X',2,'O']
-board[1] = ['X', 'O', '2']
-board[2] = ['1', 'X', 'X']
-print(board)
-
-print(minorDiagWinner(board))
+def winners(matrix):
+    if colWinner(matrix) or rowWinner(matrix) or minorDiagWinner(matrix) or majorDiagWinner(matrix):
+        return True
+    else:
+        pass
